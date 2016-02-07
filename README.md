@@ -49,7 +49,7 @@ Please do not use this program in production!!
 it's an educational project only.
 
 ## References
-I've used based my work loosely on some respectful papers
+I've based my work loosely on some respectful papers
 that i've linked below:
 * [Packet sniffing a brief introduction][packetsniff]
 * [Persistent threats and how to monitor and deter them][persistentthreat]
@@ -70,11 +70,9 @@ that i've linked below:
 ## Gaps
 
 Found something missing in the standard library that should be in
-`aptdetector`? Found something missing in `aptdetector`? First, take a
-moment to read the very brief [architecture statement][architecture] to make
-sure the functionality would be a good fit.
+`aptdetector`? Found something missing in `aptdetector`? 
 
-Then, if you are very motivated, submit [a Pull Request][prs]. Otherwise,
+If you are very motivated, submit [a Pull Request][prs]. Otherwise,
 submit a short feature request on [the Issues page][issues], and we will
 figure something out.
 
