@@ -1,0 +1,4 @@
+py==1.4.31
+pytest==2.8.7
+tox==2.3.1
+virtualenv==14.0.5
