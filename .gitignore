@@ -45,3 +45,6 @@ nosetests.xml
 
 # Vim
 *.sw[op]
+
+# Pypy
+.pypirc

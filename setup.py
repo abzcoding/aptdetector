@@ -15,7 +15,7 @@ __url__ = 'https://github.com/abzcoding/APTDetector'
 __license__ = 'BSD'
 
 
-setup(name='APTDetector',
+setup(name='aptdetector',
       version=__version__,
       description="Advanced Persistent Threat Detection by Using Network Analysis.",
       long_description=__doc__,
