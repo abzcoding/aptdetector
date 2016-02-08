@@ -1,2 +1,4 @@
 sphinxcontrib-napoleon
+pcap-parser==0.5.8
+overloading==0.4.0
 # sphinx_rtd_theme  # you'll need sphinx_rtd_theme for local dev

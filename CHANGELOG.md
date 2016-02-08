@@ -1,17 +1,24 @@
 APTDetector Changelog
 =================
 
-Since February 7, 2016 there have been 0 releases and 1 commits for
+Since February 7, 2016 there have been 0 releases and 2 commits for
 an average of zero 0-commit release every 0 weeks.
 
-0.1
+0.0.2
 ------
+
+* changed the base of network scanner on [pcap-parser][pcap-parser] instead of [CapTipper][CapTipper]
+* created [sniffer][URLSniffer] for basic monitoring connections in a [Pcap][Pcap] file
+
+0.0.1
+------
+*(February 8, 2016)*
 
 created the basic structure of the project.
 
 * Used [CapTipper][CapTipper] as the base for network analysis module
 
-0.0
+0.0.0
 ------
 *(February 7, 2016)*
 
@@ -19,3 +26,6 @@ Project Started.
 
 
 [CapTipper]: http://captipper.readthedocs.org/en/latest/
+[pcap-parser]: https://github.com/caoqianli/pcap-parser
+[URLSniffer]: https://github.com/abzcoding/aptdetector/blob/master/aptdetector/network/sniffer.py
+[Pcap]: https://en.wikipedia.org/wiki/Pcap

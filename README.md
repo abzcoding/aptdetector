@@ -5,7 +5,7 @@
 **APTDetector** is a humble try to gather all means of malware detection
 from network analysis in one place, for educational purposes only.
 
-  * use [CapTipper][CapTipper] as the base for network analysis module
+  * used [pcap-parser][pcap-parser] as the base for network analysis module
   * use [Cuckoo Sandbox][Cuckoo] as automated malware detection
 
 
@@ -16,7 +16,7 @@ See what's new [by checking the CHANGELOG][changelog].
 [rtd]: https://aptdetector.readthedocs.org/en/latest/
 [changelog]: https://github.com/abzcoding/aptdetector/blob/master/CHANGELOG.md
 
-[CapTipper]: http://captipper.readthedocs.org/en/latest/
+[pcap-parser]: https://github.com/caoqianli/pcap-parser
 [Cuckoo]: https://downloads.cuckoosandbox.org/docs/
 
 ## Installation
@@ -27,14 +27,13 @@ APTDetector can be added to a project in a few ways. There's the obvious one:
     pip install aptdetector
 ```
 
-Then, [thanks to PyPI][aptdetector_pypi], dozens of boltons are just an import away:
+Then, [thanks to PyPI][aptdetector_pypi], aptdetector is just an import away:
 
 ```python
-    import parse_pcap
-    from aptdetector.network.sniffer import urlFindler
-    urlFinder.pcap_file = pcap_file[0]
-    parse_pcap.run(urlFinder.pcap_file)
-    urlFinder()
+    from aptdetector.network.sniffer import URLSniffer
+    sniffer = URLSniffer
+    sniffer.pcap_file = 'sample.pcap'
+    sniffer.connections(source='10.66.133.90',simplify=True,show_port=True)
 ```
 
 However, due to the nature of utilities, application developers might
@@ -69,8 +68,7 @@ that i've linked below:
 
 ## Gaps
 
-Found something missing in the standard library that should be in
-`aptdetector`? Found something missing in `aptdetector`? 
+Found something missing in the in `aptdetector`? something is broken in `aptdetector`?
 
 If you are very motivated, submit [a Pull Request][prs]. Otherwise,
 submit a short feature request on [the Issues page][issues], and we will
