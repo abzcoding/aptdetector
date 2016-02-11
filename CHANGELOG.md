@@ -6,8 +6,8 @@ an average of zero 0-commit release every 0 weeks.
 
 ## 0.1.2
 
-* changed the versioning problem
-* created the base for documentation
+* started documentating
+* fixed versioning problem
 
 ## 0.1.1
 
