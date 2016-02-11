@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """``sniffer`` contains base network sniffer implemntation, but if you
 want to use it, Currently there are two implementation to choose from:
   * :class:`URLSniffer` - Sniff urls that are moving around in network
@@ -6,15 +5,18 @@ want to use it, Currently there are two implementation to choose from:
 Both classes are :class:`BaseSniffer` subtypes
 """
 
-# TODO: implement a test scenrario
+# TODO(implement a test scenrario)
 
-from pcapparser.constant import FileFormat
+from aptdetector.network.pcap_parser_wrapper import parse_pcap_file
+from aptdetector.utils.exception import FileParsingException
 from aptdetector.utils.typecheck import accepts, returns
+from overloading import overloaded, overloads
 
-__all__ = ['BaseSniffer', 'URLSniffer', 'FileSniffer']
+__all__ = ('BaseSniffer', 'URLSniffer')
+
 
 class BaseSniffer(object):
-    """The ``BaseSniffer`` is an implementation of a bare minimum network sniffer
+    """The ``BaseSniffer`` is an implementation of a bare minimum network sniffer.
 
     Raises:
         FileNotFoundError: pcap_file was not found on the system or you do not have permission
@@ -32,34 +34,52 @@ class BaseSniffer(object):
     >>> base_sniffer.pcap_file
     <_io.TextIOWrapper name='/tmp/a.pcap' mode='r' encoding='UTF-8'>
     """
+
     def __init__(self):
+        """conversations must be none at first"""
         self.__pcap_file = None
         self.__conversations = None
 
+    def run(self):
+        """parse the pcap file using :class:parse_pcap_file"""
+        try:
+            parse_pcap_file(self.__pcap_file)
+        except FileParsingException as err:
+            print(err)
+        except IOError as err:
+            print(err)
+
     @property
-    @returns(file)
+    @returns(str)
     def pcap_file(self):
+        """returns address of Pcap file"""
         return self.__pcap_file
 
     @pcap_file.setter
-    @accepts(object, file)
+    @accepts(object, str)
     def pcap_file(self, value):
+        """set the address of Pcap file"""
         try:
-            with open(pcap_file) as file:
+            with open(value):
                 pass
         except IOError:
             raise FileNotFoundError
         self.__pcap_file = value
 
     @overloaded
-    def connections():
-        # TODO: check the performance of this function
+    def connections(self):
+        """connections"""
+        # TODO(check the performance of this function)
         # not order preserving
         return list(set(self.__conversations))
 
     @overloads(connections)
-    def connections(source=None, destination=None, simplify=False, show_port=False):
+    def connections(source=None,
+                    destination=None,
+                    simplify=False,
+                    show_port=False):
         """The ``connections`` function is
+
         Args:
             source (str): Source Address in Network Connections
             destination (str): Destination Address in Network Connections
@@ -71,40 +91,38 @@ class BaseSniffer(object):
 
         Raises:
             None
-
-        >>>
         """
         if source is not None:
             target = source
-            target_id = 1
+            # target_id = 1
         elif destination is not None:
             target = destination
-            target_id = 2
+            # target_id = 2
         else:
             target = None
-            target_id = 0
+            # target_id = 0
 
         if target is None:
             return list()
         else:
             if simplify is True and show_port is True:
-                # TODO: aggregate results based on source only (without any port number)
+                # TODO(aggregate results based on source only (without any port number))
                 pass
             elif simplify is True and show_port is False:
-                # TODO: aggregate results based on source and it's port number
+                # TODO(aggregate results based on source and it's port number)
                 pass
             else:
-                # TODO: show all conversations, do not simplify anything
+                # TODO(show all conversations, do not simplify anything)
                 pass
 
 
 class URLSniffer(BaseSniffer):
-    """:class:``URLSniffer`` is an implementation of the :class:``BaseSniffer``, this
-    class will identify the urls that are passing around in the network
+    """:class:``URLSniffer`` is an implementation of the :class:``BaseSniffer``
+
+    this class will identify the urls that are passing around in the network
 
     Raises:
         FileNotFoundError: pcap_file was not found on the system or you do not have permission
-
 
     >>> sniffer = URLSniffer()
     <URLSniffer object at 0x123283922>
@@ -119,8 +137,8 @@ class URLSniffer(BaseSniffer):
     None
     >>> sniffer.connections(destination='220.181.90.14',simplify=True,show_ports=False)
     {'220.181.90.14':['10.66.133.90']}
-
-    PROTIP: this
     """
+
     def __init__(self):
+        """sample"""
         BaseSniffer.__init__(self)

@@ -2,3 +2,5 @@ py==1.4.31
 pytest==2.8.7
 tox==2.3.1
 virtualenv==14.0.5
+pcap-parser==0.5.8
+overloading==0.4.0

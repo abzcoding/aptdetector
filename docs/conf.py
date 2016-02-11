@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # aptdetector documentation build configuration file, created by
-# sphinx-quickstart on Mon Feb  8 00:04:14 2016.
+# sphinx-quickstart on Thu Feb 11 09:18:01 2016.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -32,7 +32,8 @@ import os
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
-    'sphinx.ext.ifconfig',
+    'sphinx.ext.todo',
+    'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
 ]
 
@@ -79,7 +80,7 @@ language = None
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = []
+exclude_patterns = ['_build']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -106,7 +107,7 @@ pygments_style = 'sphinx'
 #keep_warnings = False
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
-todo_include_todos = False
+todo_include_todos = True
 
 
 # -- Options for HTML output ----------------------------------------------
