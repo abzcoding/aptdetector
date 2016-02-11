@@ -1,3 +1,6 @@
+[![PyPI](https://img.shields.io/pypi/v/aptdetector.svg)](https://pypi.python.org/pypi/aptdetector) ![Python versions](https://img.shields.io/pypi/pyversions/aptdetector.svg) [![Build Status](https://travis-ci.org/abzcoding/aptdetector.svg?branch=master)](https://travis-ci.org/abzcoding/aptdetector)
+
+
 # aptdetector
 
 *Advanced Persistent Threat Detection by Using Network Analysis*
