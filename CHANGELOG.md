@@ -1,13 +1,14 @@
 # APTDetector Changelog
 
-Since February 11, 2016 there have been 0 releases and 8 commits for
+Since February 07, 2016 there have been 1 releases and 13 commits for
 
-an average of zero 0-commit release every 0 weeks.
+an average of one 13-commit release every 1 weeks.
 
 ## 0.1.3
 
 * [BaseSniffer][basesniffer] is now finished and capable of parsing a [Pcap][Pcap] file
 * fixed doctests to pass travis ci
+* released the new newversion to pypy
 
 ## 0.1.2
 
