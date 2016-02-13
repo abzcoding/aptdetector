@@ -6,16 +6,13 @@
 *Advanced Persistent Threat Detection by Using Network Analysis*
 
 **aptdetector** is a humble try to gather all means of malware detection
-
 from network analysis in one place, for educational purposes only.
 
 * used [pcap-parser][pcap-parser] as the base for network analysis module
 * use [Cuckoo Sandbox][Cuckoo] as automated malware detection
 
-aptdetector is tested against Python 3.4, 3.5, and
-
-PyPy. [Full and extensive docs would be available at Read The Docs.][rtd]
-
+aptdetector is tested against Python 3.4, 3.5, and PyPy.
+[Full and extensive docs would be available at Read The Docs.][rtd]
 See what's new by checking the [CHANGELOG][changelog].
 
 [rtd]: https://aptdetector.readthedocs.org/en/latest/
@@ -41,7 +38,6 @@ Then, [thanks to PyPI][aptdetector_pypi], aptdetector is just an import away:
 ```
 
 However, due to the nature of utilities, application developers might
-
 dependencies. See the [Integration][integration] section of the docs
 
 [aptdetector_pypi]: https://pypi.python.org/pypi/aptdetector
@@ -50,15 +46,12 @@ dependencies. See the [Integration][integration] section of the docs
 ## Disclaimer
 
 Please do not use this program in production!!
-
 it's an educational project only.
-
 
 
 ## References
 
 I've based my work loosely on some respectful papers
-
 that i've linked below:
 
 * [Packet sniffing a brief introduction][packetsniff]
@@ -80,11 +73,8 @@ that i've linked below:
 ## Gaps
 
 Found something missing in the in `aptdetector`? something is broken in `aptdetector`?
-
 If you are very motivated, submit [a Pull Request][prs]. Otherwise,
-
 submit a short feature request on [the Issues page][issues], and we will
-
 figure something out.
 
 [architecture]: https://aptdetector.readthedocs.org/en/latest/architecture.html

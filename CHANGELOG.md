@@ -1,10 +1,17 @@
 # APTDetector Changelog
 
-Since February 7, 2016 there have been 0 releases and 2 commits for
+Since February 7, 2016 there have been 0 releases and 8 commits for
 
 an average of zero 0-commit release every 0 weeks.
 
+## 0.1.3
+
+* [BaseSniffer][basesniffer] is now finished and capable of parsing a [Pcap][Pcap] file
+* fixed doctests to pass travis ci
+
 ## 0.1.2
+
+*(February 11, 2016)*
 
 * started documentating
 * fixed versioning problem
