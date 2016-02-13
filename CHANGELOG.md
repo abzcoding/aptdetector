@@ -1,6 +1,6 @@
 # APTDetector Changelog
 
-Since February 7, 2016 there have been 0 releases and 8 commits for
+Since February 11, 2016 there have been 0 releases and 8 commits for
 
 an average of zero 0-commit release every 0 weeks.
 

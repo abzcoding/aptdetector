@@ -1,7 +1,9 @@
-"""``sniffer`` contains base network sniffer implemntation, but if you
+"""``sniffer`` contains base network sniffer implemntation
+
+but if you
 want to use it, Currently there are two implementation to choose from:
-  * :class:`URLSniffer` - Sniff urls that are moving around in network
-  * :class:`FileSniffer` - Sniff files that are in the network
+* :class:`URLSniffer` - Sniff urls that are moving around in network
+* :class:`FileSniffer` - Sniff files that are in the network
 Both classes are :class:`BaseSniffer` subtypes
 """
 # TODO(implement a test scenrario)
@@ -9,8 +11,6 @@ Both classes are :class:`BaseSniffer` subtypes
 from aptdetector.network.parser.parse_pcap import parse_pcap_file
 from aptdetector.utils.exception import FileParsingException
 from aptdetector.utils.typecheck import params, returns
-
-__all__ = ('BaseSniffer')
 
 
 class BaseSniffer(object):

@@ -1,4 +1,6 @@
-"""couple of functions that was required to parse and reassemble
+"""http_parser implementation
+
+couple of functions that was required to parse and reassemble
 http requests and responses
 """
 from collections import defaultdict
@@ -69,13 +71,14 @@ class HttpParser(object):
     def send(self, http_type, data):
         """append http request or reponses
 
+        if the connection is not initiated yet then start the connection
+        and if it's still the current connection then append the packet
+
         Args:
             http_type (HttpType): type of packet
             data (str):  data of unparsed packet
         Returns:
             None
-        if the connection is not initiated yet then start the connection
-        and if it's still the current connection then append the packet
         """
         pkt = None
         if not self.inited:

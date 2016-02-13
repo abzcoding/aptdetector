@@ -82,7 +82,14 @@ Section listing
 ---------------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
 
    architecture
-   network
+   aptdetector
+
+Indices and tables
+------------------
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

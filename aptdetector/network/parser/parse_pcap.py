@@ -3,9 +3,6 @@
 parsing a pcap file so that later we would be able to use
 the urls that was found to check for any harmfull activity
 
-PROTIP:
-    not completed yet, under heavy developement
-
 >>> from aptdetector.network.parser.parse_pcap import parse_pcap_file
 >>> parse_pcap_file()
 Traceback (most recent call last):
@@ -70,6 +67,7 @@ class Stream(object):
         if the packet is after last ack sequence then
         it's a new packet so add it to buffer , and we
         will deal with it later
+
         Args:
             packet (TcpPack): packet that need to be appended
         """
@@ -81,6 +79,7 @@ class Stream(object):
 
         read all packets till now and reassmble a packet
         based on it's ack sequence number
+
         Args:
             ack_seq (int): ack sequence number
         Returns:
@@ -135,6 +134,7 @@ class TcpConnection(object):
         """parse a :class:`TcpPack` object.
 
         change attributes(ack, sin, fin , ...) of a :class:`TcpPack` object
+
         Args:
             packet (TcpPack): packet that need to be appended
         Returns:
@@ -188,6 +188,7 @@ def parse_pcap_file(file_path):
     """pcap parser.
 
     parse a pcap file to get a list :class:`TcpPacket` objects
+
     Args:
         file_path (str): address of the Pcap file that is ready to be parsed
     Returns:
