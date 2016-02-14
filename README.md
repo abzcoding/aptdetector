@@ -44,7 +44,6 @@ dependencies. See the [Integration][integration] section of the docs
 
 **Stage Zero** is now completed. you can use [v0.1.4][104] of software to test it:
 ``` python
-    from aptdetector.network.sniffer import URLSniffer
     from aptdetector.network.sniffer import BaseSniffer
     sni = BaseSniffer()
     sni.pcap_file='examples/test.pcap'
