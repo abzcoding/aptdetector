@@ -62,7 +62,6 @@ that i've linked below:
 .. _Clustering Analysis of Network Traffic for Protocol- and Structure-Independent Botnet Detection: http://usenix.org/legacy/event/sec08/tech/full_papers/gu/gu_html/index.html
 .. _Capturing System-Wide Information Flow for Malware Detection and Analysis: http://dl.acm.org/citation.cfm?id=1315261
 
-.. _gaps:
 
 Gaps
 ----

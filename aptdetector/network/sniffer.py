@@ -6,11 +6,12 @@ want to use it, Currently there are two implementation to choose from:
 * :class:`FileSniffer` - Sniff files that are in the network
 Both classes are :class:`BaseSniffer` subtypes
 """
-# TODO(implement a test scenrario)
-
+from aptdetector.network.packet import TcpPacket
 from aptdetector.network.parser.parse_pcap import parse_pcap_file
 from aptdetector.utils.exception import FileParsingException
 from aptdetector.utils.typecheck import params, returns
+
+from collections import OrderedDict
 
 
 class BaseSniffer(object):
@@ -97,6 +98,7 @@ class BaseSniffer(object):
         try:
             with open(value):
                 self.__pcap_file = value
+                self.__conversations = None
         except IOError as err:
             print(err)
 
@@ -116,33 +118,68 @@ class BaseSniffer(object):
             simplify (bool): should we simplify the results
             show_port (bool): should we hide port numbers
         Returns:
-            a List of Lists containing all the comminucations from source or to the destination
+            a List of :class:`TcpPacket` or an :class:`OrderedDict` containing all the comminucations from src or to the dst
         Raises:
             None
+
+        >>> from aptdetector.network.sniffer import BaseSniffer
+        >>> sni = BaseSniffer()
+        >>> sni.pcap_file='examples/test.pcap'
+        >>> sni.parse()
+        >>> sni.connections(destination='173.123.12.1')
+        >>> sni.connections(source='182.160.157.199',show_port=True)
+        OrderedDict([('182.160.157.199:80', ['192.168.204.136:49174', '192.168.204.136:49178', '192.168.204.136:49178',\
+ '192.168.204.136:49178', '192.168.204.136:49178', '192.168.204.136:49178'])])
+        >>>
+        >>> sni.connections(source='173.244.195.17',show_port=True,simplify=True)
+        OrderedDict([('173.244.195.17:80', ['192.168.204.136:49185', '192.168.204.136:49187'])])
+        >>>
+        >>> sni.connections(destination='192.168.204.136',show_port=True,simplify=True)
+        OrderedDict([('192.168.204.136:49174', ['182.160.157.199:80']), ('192.168.204.136:49178', ['182.160.157.199:80']),\
+ ('192.168.204.136:49184', ['108.61.196.84:80']), ('192.168.204.136:49185', ['173.244.195.17:80']), ('192.168.204.136:49187',\
+ ['173.244.195.17:80'])])
         """
         if source is not None:
-            target = source
-            target_id = 1
+            if TcpPacket.valid_ip(source):
+                target = source
+                target_id = 1
+            else:
+                print("source is not a correct ip")
+                return None
         elif destination is not None:
-            target = destination
-            target_id = 2
+            if TcpPacket.valid_ip(destination):
+                target = destination
+                target_id = 2
+            else:
+                print("destination is not a correct ip")
+                return None
         else:
             target = None
-            target_id = 0
-
+        all_packets = OrderedDict()
         if target is None:
             return self.__conversations
         else:
-            if simplify is True and show_port is True:
-                # TODO(aggregate results based on source only (without any port number))
-                pass
-            elif simplify is True and show_port is False:
-                # TODO(aggregate results based on source and it's port number)
-                pass
-            else:
-                all_packets = []
-                for pkt in self.__conversations:
-                    all_packets.append((pkt.sourceHost + ":" + str(
-                        pkt.sourcePort), pkt.destinationHost + ":" + str(
-                            pkt.destinationPort)))
-                return list(set(all_packets))
+            for pkt in self.__conversations:
+                if (pkt.sourceHost != target and target_id == 1) or (
+                        pkt.destinationHost != target and target_id == 2):
+                    continue
+                key = pkt.create_packet(target_id=target_id,
+                                        show_port=show_port,
+                                        reverse=False)
+                reverse_key = pkt.create_packet(target_id=target_id,
+                                                show_port=show_port,
+                                                reverse=True)
+                if key in all_packets.keys():
+                    # all_packets have been initialized before
+                    if reverse_key in all_packets[key] and simplify is True:
+                        # duplicate, no need to append
+                        pass
+                    else:
+                        # new value
+                        all_packets[key].append(reverse_key)
+                else:
+                    # all_packet should be initialized
+                    all_packets[key] = [reverse_key]
+            if len(all_packets) < 1:
+                return None
+            return all_packets

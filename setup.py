@@ -8,7 +8,7 @@ the Docs <http://aptdetector.readthedocs.org>`_.
 from setuptools import setup
 
 __author__ = 'Abouzar Parvan'
-__version__ = '0.1.2'
+__version__ = '0.1.4'
 __contact__ = 'abzcoding@gmail.com'
 __url__ = 'https://github.com/abzcoding/aptdetector'
 __license__ = 'BSD'
@@ -29,7 +29,7 @@ setup(name='aptdetector',
           'Topic :: Security',
           'Intended Audience :: Education',
           'Topic :: System :: Networking',
-          'Development Status :: 1 - Planning',
+          'Development Status :: 2 - Pre-Alpha',
           'Programming Language :: Python :: 3.4',
           'Programming Language :: Python :: 3.5',
       ])

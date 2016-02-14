@@ -31,10 +31,7 @@ aptdetector can be added to a project in a few ways. There's the obvious one:
 Then, [thanks to PyPI][aptdetector_pypi], aptdetector is just an import away:
 
 ``` python
-    from aptdetector.network.sniffer import URLSniffer
-    sniffer = URLSniffer
-    sniffer.pcap_file = 'sample.pcap'
-    sniffer.connections(source='10.66.133.90',simplify=True,show_port=True)
+    import aptdetector
 ```
 
 However, due to the nature of utilities, application developers might
@@ -43,6 +40,22 @@ dependencies. See the [Integration][integration] section of the docs
 [aptdetector_pypi]: https://pypi.python.org/pypi/aptdetector
 [integration]: https://aptdetector.readthedocs.org/en/latest/architecture.html#integration
 
+## Status
+
+**Stage Zero** is now completed. you can use [v0.1.4][104] of software to test it:
+``` python
+    from aptdetector.network.sniffer import URLSniffer
+    from aptdetector.network.sniffer import BaseSniffer
+    sni = BaseSniffer()
+    sni.pcap_file='examples/test.pcap'
+    sni.parse()
+    sni.connections(source='173.244.195.17',show_port=True,simplify=True)
+    sni.connections(destination='192.168.204.136',show_port=False,simplify=True)
+```
+
+you can check out the [Stages][stages] if you want to get a sense of project roadmap.
+[104]: https://pypi.python.org/pypi/aptdetector/0.1.4
+[stages]: https://github.com/abzcoding/aptdetector/blob/master/STAGES.md
 ## Disclaimer
 
 Please do not use this program in production!!

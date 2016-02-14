@@ -17,15 +17,43 @@ class TcpPacket(object):
         self.__url = None
 
     def __str__(self):
-        """string representation of :class:TcpPacket object"""
+        """string representation of :class:`TcpPacket` object"""
         res = str(self.sourceHost + ":" + str(self.sourcePort) + " ---> " +
                   self.destinationHost + ":" + str(
                       self.destinationPort) + "\n" + self.request)
         return res
 
+    @params(self=object, target_id=int, show_port=bool, reverse=bool)
+    def create_packet(self,
+                      target_id,
+                      show_port={bool: False},
+                      reverse={bool: False}):
+        """create an address based on target_id"""
+        if (target_id == 1 and reverse is False) or (target_id == 2 and
+                                                     reverse is True):
+            if show_port:
+                return self.sourceHost + ":" + str(self.sourcePort)
+            else:
+                return self.sourceHost
+        elif (target_id == 2 and reverse is False) or (target_id == 1 and
+                                                       reverse is True):
+            if show_port:
+                return self.destinationHost + ":" + str(self.destinationPort)
+            else:
+                return self.destinationHost
+        else:
+            return None
+
+    @classmethod
     @returns(bool)
-    def valid_ip(self, addr):
-        """check for valid ip"""
+    def valid_ip(cls, addr):
+        """check for valid ip
+
+        Args:
+            addr    (str):  an string that need to be checked
+        Returns:
+            True if addr is a valid ip address , False otherwise
+        """
         try:
             socket.inet_aton(addr)
             return True
@@ -35,61 +63,61 @@ class TcpPacket(object):
     @property
     @returns(str)
     def sourceHost(self):
-        """sample"""
+        """get source host's ip"""
         return self.__sourceHost
 
     @sourceHost.setter
     @params(self=object, value=str)
     def sourceHost(self, value):
-        """sample"""
-        if self.valid_ip(value):
+        """set source host's port"""
+        if TcpPacket.valid_ip(value):
             self.__sourceHost = value
 
     @property
     @returns(int)
     def sourcePort(self):
-        """sample"""
+        """get source host's port"""
         return self.__sourcePort
 
     @sourcePort.setter
     @params(self=object, value=int)
     def sourcePort(self, value):
-        """sample"""
+        """set source host's port"""
         self.__sourcePort = value
 
     @property
     @returns(str)
     def destinationHost(self):
-        """sample"""
+        """get destination host's ip"""
         return self.__destinationHost
 
     @destinationHost.setter
     @params(self=object, value=str)
     def destinationHost(self, value):
-        """sample"""
-        if self.valid_ip(value):
+        """set destination host's ip"""
+        if TcpPacket.valid_ip(value):
             self.__destinationHost = value
 
     @property
     @returns(int)
     def destinationPort(self):
-        """sample"""
+        """get destination host's port"""
         return self.__destinationPort
 
     @destinationPort.setter
     @params(self=object, value=int)
     def destinationPort(self, value):
-        """sample"""
+        """set destination host's port"""
         self.__destinationPort = value
 
     @property
     @returns(str)
     def request(self):
-        """sample"""
+        """get requested url address"""
         return self.__url
 
     @request.setter
     @params(self=object, value=str)
     def request(self, value):
-        """sample"""
+        """set requested url address"""
         self.__url = value
