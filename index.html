@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>aptdetector by abzcoding</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>aptdetector</h1>
+        <h2>Advanced Persistent Threat Detection Using Network Analysis</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/abzcoding/aptdetector/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/abzcoding/aptdetector/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/abzcoding/aptdetector" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="aptdetector" class="anchor" href="#aptdetector" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>aptdetector</h1>
+
+<p><em>Advanced Persistent Threat Detection by Using Network Analysis</em></p>
+
+<p><strong>aptdetector</strong> is a humble try to gather all means of malware detection
+from network analysis in one place, for educational purposes only.</p>
+
+<ul>
+<li>used <a href="https://github.com/caoqianli/pcap-parser">pcap-parser</a> as the base for network analysis module</li>
+<li>use <a href="https://downloads.cuckoosandbox.org/docs/">Cuckoo Sandbox</a> as automated malware detection</li>
+</ul>
+
+<p>aptdetector is tested against Python 3.4, 3.5, and PyPy.
+<a href="https://aptdetector.readthedocs.org/en/latest/">Full and extensive docs would be available at Read The Docs.</a>
+See what's new by checking the <a href="https://github.com/abzcoding/aptdetector/blob/master/CHANGELOG.md">CHANGELOG</a>.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>aptdetector can be added to a project in a few ways. There's the obvious one:</p>
+
+<div class="highlight highlight-source-shell"><pre>    pip install aptdetector</pre></div>
+
+<p>Then, <a href="https://pypi.python.org/pypi/aptdetector">thanks to PyPI</a>, aptdetector is just an import away:</p>
+
+<div class="highlight highlight-source-python"><pre>    <span class="pl-k">import</span> aptdetector</pre></div>
+
+<p>However, due to the nature of utilities, application developers might
+dependencies. See the <a href="https://aptdetector.readthedocs.org/en/latest/architecture.html#integration">Integration</a> section of the docs</p>
+
+<h2>
+<a id="status" class="anchor" href="#status" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Status</h2>
+
+<p><strong>Stage Zero</strong> is now completed. you can use <a href="https://pypi.python.org/pypi/aptdetector/0.1.4">v0.1.4</a> of software to test it:</p>
+
+<div class="highlight highlight-source-python"><pre>    <span class="pl-k">from</span> aptdetector.network.sniffer <span class="pl-k">import</span> BaseSniffer
+    sni <span class="pl-k">=</span> BaseSniffer()
+    sni.pcap_file<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>examples/test.pcap<span class="pl-pds">'</span></span>
+    sni.parse()
+    sni.connections(<span class="pl-v">source</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>173.244.195.17<span class="pl-pds">'</span></span>,<span class="pl-v">show_port</span><span class="pl-k">=</span><span class="pl-c1">True</span>,<span class="pl-v">simplify</span><span class="pl-k">=</span><span class="pl-c1">True</span>)
+    sni.connections(<span class="pl-v">destination</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>192.168.204.136<span class="pl-pds">'</span></span>,<span class="pl-v">show_port</span><span class="pl-k">=</span><span class="pl-c1">False</span>,<span class="pl-v">simplify</span><span class="pl-k">=</span><span class="pl-c1">True</span>)</pre></div>
+
+<p>you can check out the <a href="https://github.com/abzcoding/aptdetector/blob/master/STAGES.md">Stages</a> if you want to get a sense of project roadmap.</p>
+
+<h2>
+<a id="disclaimer" class="anchor" href="#disclaimer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Disclaimer</h2>
+
+<p>Please do not use this program in production!!
+it's an educational project only.</p>
+
+<h2>
+<a id="references" class="anchor" href="#references" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>References</h2>
+
+<p>I've based my work loosely on some respectful papers
+that i've linked below:</p>
+
+<ul>
+<li><a href="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&amp;amp;arnumber=1166620&amp;amp;url=http%3A%2F%2Fieeexplore.ieee.org%2Fiel5%2F45%2F26303%2F01166620.pdf%3Farnumber%3D1166620">Packet sniffing a brief introduction</a></li>
+<li><a href="http://www.sciencedirect.com/science/article/pii/S1353485811700861">Persistent threats and how to monitor and deter them</a></li>
+<li><a href="https://www.usenix.org/legacy/event/sec09/tech/full_papers/kolbitsch.pdf">Effective and Efficient Malware Detection at the End Host</a></li>
+<li><a href="http://www.trendmicro.com/cloud-content/us/pdfs/security-intelligence/white-papers/wp-detecting-apt-activity-with-network-traffic-analysis.pdf">Detecting APT Activity with Network Traffic Analysis</a></li>
+<li><a href="http://geant3.archive.geant.net/Media_Centre/Media_Library/Media%20Library/gn3_jra2_t4_M4_deliverable.pdf">Inspecting DNS Flow Traffic for Purposes of Botnet Detection</a></li>
+<li><a href="http://usenix.org/legacy/event/sec08/tech/full_papers/gu/gu_html/index.html">BotMiner: Clustering Analysis of Network Traffic for Protocol- and Structure-Independent Botnet Detection</a></li>
+<li><a href="http://dl.acm.org/citation.cfm?id=1315261">Panorama: Capturing System-Wide Information Flow for Malware Detection and Analysis</a></li>
+</ul>
+
+<h2>
+<a id="gaps" class="anchor" href="#gaps" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Gaps</h2>
+
+<p>Found something missing in the in <code>aptdetector</code>? something is broken in <code>aptdetector</code>?
+If you are very motivated, submit <a href="https://github.com/abzcoding/aptdetector/pulls">a Pull Request</a>. Otherwise,
+submit a short feature request on <a href="https://github.com/abzcoding/aptdetector/issues">the Issues page</a>, and we will
+figure something out.</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
