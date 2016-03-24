@@ -7,6 +7,6 @@ install:
   pip install -r requirements-test.txt
 script: 
   - py.test --doctest-modules aptdetector tests
-  - coverage run --source aptdetector -m py.test
+  - py.test --cov=aptdetector tests/ 
 after_success:
   coveralls

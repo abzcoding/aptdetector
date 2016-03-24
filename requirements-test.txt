@@ -8,3 +8,4 @@ requests
 validators
 bs4
 coveralls
+pytest-cov
