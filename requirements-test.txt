@@ -7,3 +7,4 @@ overloading==0.4.0
 requests
 validators
 bs4
+coveralls
