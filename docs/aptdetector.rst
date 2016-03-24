@@ -7,6 +7,7 @@ Subpackages
 .. toctree::
 
     aptdetector.network
+    aptdetector.malware
 
 Module contents
 ---------------
