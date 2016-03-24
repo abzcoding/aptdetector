@@ -18,7 +18,7 @@ In the very fist steps we must be capable of watching the network for any malwar
 We want to generalize the malware detection part eventually , but right now i think the [Cuckoo Sandbox][cuckoo] would be sufficient.
 
 * create a workflow to analyse urls and files using [Cuckoo Sandbox][cuckoo]
-* it must be capable of passing the urls that were from [Stage Zero][stagezero] to [Cuckoo Sandbox][cuckoo]
+* it must be capable of passing the urls that were sniffed from [Stage Zero][stagezero] to [Cuckoo Sandbox][cuckoo]
 
 
 
@@ -106,4 +106,4 @@ and many other ideas that will be added gradually...
 [trafclass]: https://en.wikipedia.org/wiki/Traffic_classification
 [dynanal]: http://opensecuritytraining.info/MalwareDynamicAnalysis.html
 [sandbox]: https://blog.avast.com/2012/11/16/what-is-the-avast-autosandbox-and-how-does-it-work/
-
+[stagezero]: https://github.com/abzcoding/aptdetector/blob/master/STAGES.md
