@@ -1,4 +1,4 @@
-[![PyPI](https://img.shields.io/pypi/v/aptdetector.svg)](https://pypi.python.org/pypi/aptdetector) ![Python versions](https://img.shields.io/pypi/pyversions/aptdetector.svg) [![Build Status](https://travis-ci.org/abzcoding/aptdetector.svg?branch=master)](https://travis-ci.org/abzcoding/aptdetector)
+[![PyPI](https://img.shields.io/pypi/v/aptdetector.svg)](https://pypi.python.org/pypi/aptdetector) ![Python versions](https://img.shields.io/pypi/pyversions/aptdetector.svg) [![Build Status](https://travis-ci.org/abzcoding/aptdetector.svg?branch=master)](https://travis-ci.org/abzcoding/aptdetector) [![Coverage Status](https://coveralls.io/repos/github/abzcoding/aptdetector/badge.svg?branch=master)](https://coveralls.io/github/abzcoding/aptdetector?branch=master)
 
 
 # aptdetector
