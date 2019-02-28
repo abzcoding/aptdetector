@@ -1,11 +1,12 @@
 [![PyPI](https://img.shields.io/pypi/v/aptdetector.svg)](https://pypi.python.org/pypi/aptdetector) ![Python versions](https://img.shields.io/pypi/pyversions/aptdetector.svg) [![Build Status](https://travis-ci.org/abzcoding/aptdetector.svg?branch=master)](https://travis-ci.org/abzcoding/aptdetector) [![Coverage Status](https://coveralls.io/repos/github/abzcoding/aptdetector/badge.svg?branch=master)](https://coveralls.io/github/abzcoding/aptdetector?branch=master)
 
-
-# aptdetector
+# This project is no longer maintained
+---
+## aptdetector
 
 *Advanced Persistent Threat Detection by Using Network Analysis*
 
-**aptdetector** is a humble try to gather all means of malware detection
+**aptdetector** is a simple try to gather all means of malware detection
 from network analysis in one place, for educational purposes only.
 
 * used [pcap-parser][pcap-parser] as the base for network analysis module
@@ -23,15 +24,25 @@ See what's new by checking the [CHANGELOG][changelog].
 ## Installation
 
 aptdetector can be added to a project in a few ways. There's the obvious one:
-
-``` sh
+```sh
     pip install aptdetector
 ```
 
-Then, [thanks to PyPI][aptdetector_pypi], aptdetector is just an import away:
+then, [thanks to PyPI][aptdetector_pypi], aptdetector is just an import away:
 
 ``` python
     import aptdetector
+```
+
+and if that did not work, you can use:
+``` sh
+    git clone https://github.com/abzcoding/pcap-parser.git
+    cd pcap-parser
+    python setup.py install
+    cd ../
+    git clone https://github.com/abzcoding/aptdetector.git
+    cd aptdetector
+    python setup.py install
 ```
 
 However, due to the nature of utilities, application developers might
@@ -42,19 +53,17 @@ dependencies. See the [Integration][integration] section of the docs
 
 ## Status
 
-**Stage Zero** is now completed. you can use [v0.1.4][104] of software to test it:
+**Stage Zero** is now completed. you can use [v0.1.4](https://pypi.python.org/pypi/aptdetector/0.1.4) of software to test it:
 ``` python
     from aptdetector.network.sniffer import BaseSniffer
     sni = BaseSniffer()
     sni.pcap_file='examples/test.pcap'
     sni.parse()
-    sni.connections(source='173.244.195.17',show_port=True,simplify=True)
-    sni.connections(destination='192.168.204.136',show_port=False,simplify=True)
+    print(sni.connections(source='173.244.195.17',show_port=True,simplify=True))
+    print(sni.connections(destination='192.168.204.136',show_port=False,simplify=True))
 ```
+you can check out the [Stages](https://github.com/abzcoding/aptdetector/blob/master/STAGES.md) if you want to get a sense of project roadmap.
 
-you can check out the [Stages][stages] if you want to get a sense of project roadmap.
-[104]: https://pypi.python.org/pypi/aptdetector/0.1.4
-[stages]: https://github.com/abzcoding/aptdetector/blob/master/STAGES.md
 ## Disclaimer
 
 Please do not use this program in production!!
